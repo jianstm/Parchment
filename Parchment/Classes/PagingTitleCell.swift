@@ -74,6 +74,13 @@ open class PagingTitleCell: PagingCell {
         from: viewModel.backgroundColor,
         to: viewModel.selectedBackgroundColor,
         with: attributes.progress)
+      
+      var fontSize: CGFloat {
+        let from = viewModel.font.pointSize
+        let to = viewModel.selectedFont.pointSize
+        return from + (to - from) * attributes.progress
+      }
+      titleLabel.font = viewModel.font.withSize(fontSize)
     }
   }
   
